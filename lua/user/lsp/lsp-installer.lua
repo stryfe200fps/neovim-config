@@ -12,7 +12,7 @@ local servers = {
   "bashls",
   "jsonls",
   "yamlls",
-  "intelephense"
+  "phpactor"
 }
 
 lsp_installer.setup()
@@ -41,6 +41,11 @@ for _, server in pairs(servers) do
   end
 
   if server == "intelephense" then
+    local php_opts = require "user.lsp.settings.intelephense"
+    opts = vim.tbl_deep_extend("force", php_opts, opts)
+  end
+
+  if server == "phpactor" then
     local php_opts = require "user.lsp.settings.intelephense"
     opts = vim.tbl_deep_extend("force", php_opts, opts)
   end
